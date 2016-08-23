@@ -55,4 +55,24 @@ app.controller('PeopleController', ['$http', '$log', function($http, $log) {
         this.people.splice(personIndex, 1);
       });
   };
+
+  // Start editing a button
+  this.startEditing = function(person) {
+    $log.log(`Editing person "${person.name}" (id: ${person.id})`);
+    person.oldPerson = Object.assign({}, person);
+    person.editing = true;
+  };
+
+  // Stop editing a person and either save or rollback changes
+  this.stopEditing = function(person, save) {
+    person.editing = false;
+    if (save) {
+      $log.log(`Edited person "${person.name}" (id: ${person.id})`);
+      this.updatePerson(person.id, person.name, person.gender);
+      return person;
+    } else {
+      $log.log(`Canceled editing person "${person.name}" (id: ${person.id})`);
+      return person.oldPerson;
+    }
+  };
 }]);

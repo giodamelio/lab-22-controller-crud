@@ -99,7 +99,7 @@
                   <button
                     class="btn btn-xs btn-default"
                     type="button"
-                    ng-click="person.editing=true">
+                    ng-click="pc.startEditing(person)">
                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                   </button>
                 </div>
@@ -107,7 +107,7 @@
                   <button
                     class="btn btn-xs btn-default"
                     type="button"
-                    ng-click="person.editing=false;pc.updatePerson(person.id, person.name, person.gender)">
+                    ng-click="person=pc.stopEditing(person, true)">
                     <i class="fa fa-save" aria-hidden="true"></i> Save
                   </button>
                 </div>
@@ -125,7 +125,7 @@
                   <button
                     type="button"
                     class="btn btn-xs btn-danger"
-                    ng-click="person.editing=false">
+                    ng-click="person=pc.stopEditing(person, false)">
                     <i class="fa fa-undo" aria-hidden="true"></i> Cancel
                   </button>
                 </div>
